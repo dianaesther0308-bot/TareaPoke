@@ -1,4 +1,3 @@
-
 "use client";
 
 import { useState } from "react";
@@ -39,25 +38,25 @@ export default function LoginPage() {
   }
 
   return (
-    <main
-      className="min-h-screen w-full flex items-center justify-center bg-cover bg-center bg-no-repeat relative"
+    <section
+      className="relative flex min-h-dvh w-full items-center justify-center bg-cover bg-center bg-no-repeat px-4 py-8"
       style={{
         backgroundImage: "url('/fondo-login.jpg')",
       }}
     >
-      {/* Capa oscura sobre la imagen */}
+      {/* Capa oscura */}
       <div className="absolute inset-0 bg-black/40"></div>
 
-      {/* Formulario */}
-      <div className="relative z-10 w-full max-w-md rounded-2xl border border-white/40 bg-white/90 p-8 shadow-2xl backdrop-blur-md sm:p-10">
+      {/* Contenedor del formulario */}
+      <div className="relative z-10 w-full max-w-md rounded-2xl border border-white/40 bg-white/90 p-6 shadow-2xl backdrop-blur-md sm:p-8">
 
         {/* Título */}
-        <div className="mb-8 text-center">
-          <h1 className="text-4xl font-extrabold text-gray-900">
+        <div className="mb-7 text-center">
+          <h1 className="text-3xl font-extrabold text-gray-900 sm:text-4xl">
             Poké<span className="text-red-500">Tienda</span>
           </h1>
 
-          <p className="mt-3 text-gray-600">
+          <p className="mt-4 text-gray-600">
             ¡Bienvenido de nuevo!
           </p>
 
@@ -73,7 +72,7 @@ export default function LoginPage() {
           </div>
         )}
 
-        {/* Campos */}
+        {/* Formulario */}
         <form onSubmit={manejarLogin} className="space-y-5">
 
           <div>
@@ -137,6 +136,6 @@ export default function LoginPage() {
         </div>
 
       </div>
-    </main>
+    </section>
   );
 }

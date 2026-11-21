@@ -1,4 +1,3 @@
-
 import TarjetaProducto from "../componentes/tarjeta";
 import { createClient } from "../lib/supServer";
 
@@ -20,20 +19,24 @@ async function getProductos() {
 export default async function ProductosPage() {
     const productos = await getProductos();
 
-return (
-  <section className="w-full max-w-6xl mx-auto px-6 py-10">
-    <h2 className="text-2xl font-bold mb-7 text-center">
-      CATÁLOGO POKÉMON
-    </h2>
+    return (
+        <section className="w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8 sm:py-10">
 
-    <div className="productos-grid">
-      {productos.map((item) => (
-        <TarjetaProducto
-          key={item.id}
-          producto={item}
-        />
-      ))}
-    </div>
-  </section>
-);
+            {/* Título */}
+            <h2 className="text-2xl sm:text-3xl font-bold mb-8 text-center">
+                CATÁLOGO POKÉMON
+            </h2>
+
+            {/* Catálogo */}
+            <div className="productos-grid">
+                {productos.map((item) => (
+                    <TarjetaProducto
+                        key={item.id}
+                        producto={item}
+                    />
+                ))}
+            </div>
+
+        </section>
+    );
 }

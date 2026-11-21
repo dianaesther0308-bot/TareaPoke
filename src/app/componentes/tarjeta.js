@@ -1,4 +1,3 @@
-
 "use client";
 
 import { useState } from "react";
@@ -17,7 +16,7 @@ function Boton() {
     return (
         <button
             onClick={agregado}
-            className={`${color} hover:opacity-90 text-white font-medium px-3 py-2 rounded-lg text-sm w-full transition`}
+            className={`${color} hover:opacity-90 text-white font-medium px-2 py-3 rounded-lg text-sm w-full h-full min-h-12 transition`}
         >
             {text}
         </button>
@@ -48,53 +47,49 @@ export default function TarjetaProducto({ producto }) {
     };
 
     return (
-        <section className="w-full h-full">
-            <div className="bg-white border border-gray-200 rounded-xl shadow-md hover:shadow-lg transition-shadow p-5 h-full flex flex-col">
+        <article className="w-full min-w-0 h-full flex flex-col bg-white border border-gray-200 rounded-xl shadow-md hover:shadow-lg transition-shadow p-4 sm:p-5">
 
-                {/* Imagen */}
-                <div className="w-full h-44 flex items-center justify-center mb-4">
-                    <img
-                        src={producto.imagen}
-                        alt={producto.nombre}
-                        className="w-full h-full object-contain rounded-lg"
-                    />
-                </div>
+            {/* Imagen */}
+            <div className="w-full aspect-video overflow-hidden rounded-lg mb-5">
+                <img
+                    src={producto.imagen}
+                    alt={producto.nombre}
+                    className="w-full h-full object-cover"
+                />
+            </div>
 
-                {/* Nombre */}
-                <h3 className="text-xl font-bold mb-2">
-                    {producto.nombre}
-                </h3>
+            {/* Nombre */}
+            <h3 className="text-xl font-bold text-gray-900 mb-2">
+                {producto.nombre}
+            </h3>
 
-                {/* Descripción */}
-                <p className="text-gray-600 text-sm mb-4 flex-grow">
-                    {producto.descripcion}
-                </p>
+            {/* Descripción */}
+            <p className="text-gray-600 text-sm leading-relaxed mb-5 flex-1">
+                {producto.descripcion}
+            </p>
 
-                {/* Precio */}
-                <p className="text-lg font-bold text-gray-900 mb-4">
-                    ${Number(producto.precio).toFixed(2)}
-                </p>
+            {/* Precio */}
+            <p className="text-lg font-bold text-gray-900 mb-4">
+                ${Number(producto.precio).toFixed(2)}
+            </p>
 
-                {/* Botones */}
-                <div className="flex gap-2 mt-auto">
-                    <div className="flex-1">
-                        <Boton />
-                    </div>
+            {/* Botones */}
+            <div className="grid grid-cols-2 gap-2 mt-auto">
 
-                    <button
-                        onClick={handleEliminar}
-                        disabled={cargando}
-                        className="flex-1 bg-red-500 hover:bg-red-600 text-white font-medium px-3 py-2 rounded-lg text-sm disabled:opacity-50"
-                    >
-                        {cargando ? "Eliminando..." : "Eliminar"}
-                    </button>
-                </div>
+                <Boton />
+
+                <button
+                    onClick={handleEliminar}
+                    disabled={cargando}
+                    className="w-full h-full min-h-12 bg-red-500 hover:bg-red-600 text-white font-medium px-2 py-3 rounded-lg text-sm transition disabled:opacity-50"
+                >
+                    {cargando ? "Eliminando..." : "Eliminar"}
+                </button>
 
             </div>
-        </section>
+
+        </article>
     );
 }
-
-    
 
 
