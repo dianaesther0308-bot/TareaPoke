@@ -28,8 +28,6 @@ export default function LoginPage() {
         setCargando(false);
       }
     } catch (err) {
-      // Next.js puede usar una redirección interna
-      // cuando el inicio de sesión es correcto.
       if (err?.digest?.startsWith("NEXT_REDIRECT")) {
         throw err;
       }
@@ -42,7 +40,7 @@ export default function LoginPage() {
 
   return (
     <main
-      className="relative flex min-h-screen items-center justify-center bg-cover bg-center bg-no-repeat px-3 py-9"
+      className="min-h-screen w-full flex items-center justify-center bg-cover bg-center bg-no-repeat relative"
       style={{
         backgroundImage: "url('/fondo-login.jpg')",
       }}

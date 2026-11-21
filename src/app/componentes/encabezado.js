@@ -15,7 +15,7 @@ export default function Encabezado({ sesionIniciada }) {
 
   return (
     <header className="bg-white border-b border-gray-200 shadow-sm">
-      <div className="max-w-6xl mx-auto px-6 py-5 flex flex-wrap items-center justify-between gap-5">
+      <div className="w-full">
 
         <Link href="/productos">
           <h1 className="text-2xl font-extrabold text-gray-900">
