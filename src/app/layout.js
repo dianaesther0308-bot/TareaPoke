@@ -1,9 +1,9 @@
 
 import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
-import Link from "next/link";
 import RegistrarSW from "./componentes/RegistrarSW";
-import BotonCerrarSesion from "./componentes/cerrarSesion";
+import Encabezado from "./componentes/encabezado";
+import { createClient } from "./lib/supServer";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -20,22 +20,20 @@ export const metadata = {
   description: "Catálogo de Pokémon de demostración",
 };
 
-export default function RootLayout({ children }) {
+export default async function RootLayout({ children }) {
+  const supabase = await createClient();
+
+  const {
+    data: { user },
+  } = await supabase.auth.getUser();
+
   return (
     <html
       lang="es"
       className={`${geistSans.variable} ${geistMono.variable} h-full antialiased`}
     >
-      <body className="min-h-full flex flex-col">
-        <header>
-          <h1>POKÉTIENDA · Pokémon</h1>
-
-          <nav>
-            <Link href="/productos">PRODUCTOS</Link>
-            <Link href="/contacto">CONTACTO</Link>
-            <BotonCerrarSesion />
-          </nav>
-        </header>
+      <body className="min-h-screen bg-slate-50">
+        <Encabezado sesionIniciada={!!user} />
 
         <RegistrarSW />
 
